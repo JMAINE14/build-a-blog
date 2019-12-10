@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<hr />
+
+{% for post in blogs %}
+<li>{{post.title}}
+    <p>{{post.body}}</p>
+    <form method="GET" style="display:inline-block;">
+    </form>
+</li>
+{% endfor %}
+
+<hr />
+
+{% endblock %}
