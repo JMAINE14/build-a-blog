@@ -22,18 +22,21 @@ class Blog(db.Model):
 # home route...
 @app.route('/', methods=['GET'])
 def index():
-    if request.method == 'GET':
-        blogs = Blog.query.all()
+    blog_id = request.args.get('id')
+    if blog_id:
+        blog = Blog.query.get(blog_id)
+        return render_template('viewpost.html', blog = blog)
 
+    blogs = Blog.query.all()
     return render_template('mainpage.html', blogs = blogs )
 
 
 # make a viewpost access point....
-@app.route('/viewpost', methods =['GET'])
-def viewpost():
-    blog_id = request.args.get('id')
-    blog = Blog.query.get(blog_id)
-    return render_template('viewpost.html', blog = blog)
+# @app.route('/viewpost', methods =['GET'])
+# def viewpost():
+#     blog_id = request.args.get('id')
+#     blog = Blog.query.get(blog_id)
+#     return render_template('viewpost.html', blog = blog)
 
 # make a newpost access point....
 @app.route('/newpost', methods=['POST', 'GET'])

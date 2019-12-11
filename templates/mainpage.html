@@ -5,10 +5,8 @@
 <hr />
 
 {% for post in blogs %}
-<li>{{post.title}}
+<li><a href="/?id={{post.id}}">{{post.title}}</a>
     <p>{{post.body}}</p>
-    <form method="GET" style="display:inline-block;">
-    </form>
 </li>
 {% endfor %}
 
